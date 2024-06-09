@@ -20,6 +20,7 @@ import { EffectuerpaiementComponent } from './components/effectuerpaiement/effec
 import { FactureFormComponent } from './components/facture-form/facture-form.component';
 import { RecapitulatifComponent } from './components/recapitulatif/recapitulatif.component';
 import { NavClientComponent } from './nav-client/nav-client.component';
+import { CompteComponent } from './compte/compte.component';
 
 
 
@@ -36,7 +37,8 @@ import { NavClientComponent } from './nav-client/nav-client.component';
     EffectuerpaiementComponent,
     FactureFormComponent,
     RecapitulatifComponent,
-    NavClientComponent  ],
+    NavClientComponent,
+    CompteComponent  ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

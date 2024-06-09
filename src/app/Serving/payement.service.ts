@@ -18,4 +18,17 @@ export class PayementService {
   makeTransaction(request: TransactionRequest): Observable<TransactionRequest> {
     return this.http.post<TransactionRequest>(this.apiUrl, request);
   }
+
+  private baseUrl = 'http://localhost:8090/api';
+
+  id !:number;
+
+
+  getCompteSolde(clientId: number): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/client/${clientId}/compte/solde`);
+  }
+
+  getClientById(clientId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/client/${clientId}`);
+  }
 }
