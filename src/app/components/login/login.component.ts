@@ -1,41 +1,63 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/Serving/auth.service';
-import { LoginRequest } from 'src/app/models copy/LoginRequest';
-import { JwtAgentResponse } from 'src/app/models copy/JwtAgentResponse';
+import { LoginService } from '../../Service/login.service';
+import { TokenStorageService } from 'src/app/Service/token-storage-service.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  errorMessage: string = '';
+export class LoginComponent implements OnInit {
+  client = {
+    numTel: "",
+    password: "",
 
-  constructor(private authService: AuthService, private router: Router) { }
+  };
 
-  onSubmit(): void {
-    const loginRequest: LoginRequest = {
-      username: this.username,
-      password: this.password
-    };
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  passwordFieldType: string = 'password';
 
-    this.authService.login(loginRequest).subscribe(
-      (response) => {
-        // Store the JWT token
-        localStorage.setItem('token', response.token);
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private tokenStorage: TokenStorageService,
+  ) { }
 
-        // Redirect to another page, e.g., dashboard
-        this.router.navigate(['/post']);
-      },
-      (error) => {
-        console.error('Login failed', error);
-        this.errorMessage = 'Invalid username or password';
-      }
-    );
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      // this.router.navigate(['/post']);
+      this.roles = this.tokenStorage.getClient().roles;
+
 
     }
   }
 
+  submitClientLogInForm(form: any) {
+    const { numTel, password } = this.client;
+    this.loginService.login(numTel, password).subscribe({
+      next: data => {
+        this.tokenStorage.saveToken(data.jwt);
+        this.tokenStorage.saveClient(data);
+        window.sessionStorage.setItem("username", numTel);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getClient().roles;
+        this.router.navigate(['/post']);
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        console.log(err.error.message);
+        this.isLoginFailed = true;
+      }
+    });
+
+  }
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
+}
