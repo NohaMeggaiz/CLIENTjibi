@@ -1,0 +1,17 @@
+<!-- src/app/login/login.component.html -->
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <form (ngSubmit)="onSubmit()">
+    <h3>Login Here</h3>
+    <label for="phone">Phone</label>
+    <input type="text" [(ngModel)]="username" name="username" id="phone" required>
+    <label for="password">Password</label>
+    <input type="password" [(ngModel)]="password" name="password" id="password" required>
+    <button type="submit" routerLink="/post" >Log In</button>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </form>
+</div>

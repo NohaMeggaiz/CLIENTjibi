@@ -1,0 +1,77 @@
+.services-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.service-box {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-box img {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+    object-fit: cover; /* Maintain aspect ratio and fill the space */
+    margin-bottom: 15px; /* Space between the image and the heading */
+}
+
+.service-box h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.service-box p {
+    font-size: 16px;
+    color: #666;
+}
+
+/*****/
+/* Navbar Container */
+.navbar-container {
+    display: flex;
+    justify-content: space-between; /* Align items to the start and end of the container */
+    align-items: center; /* Vertically center items */
+    padding: 0 20px; /* Add padding to the left and right */
+    background-color: #1976D2; /* Set background color */
+    color: white; /* Set text color */
+  }
+  
+  /* Logo */
+  .logo {
+    height: 40px; /* Adjust height as needed */
+    width: auto; /* Maintain aspect ratio */
+  }
+  
+  /* Navigation Buttons Container */
+  .nav-buttons {
+    display: flex; /* Arrange buttons in a row */
+    gap: 20px; /* Add space between buttons */
+  }
+  
+  /* Navigation Button */
+  .nav-button {
+    padding: 10px 20px; /* Add padding to buttons */
+    border: none;
+    border-radius: 5px;
+    background-color: transparent; /* Make button background transparent */
+    color: white; /* Set text color */
+    font-size: 16px; /* Adjust font size */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease; /* Add smooth transition */
+  }
+  
+  .nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Add hover effect */
+  }
+  
+
+/********************************/
+

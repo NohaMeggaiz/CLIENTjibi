@@ -1,0 +1,34 @@
+<!-- recapitulatif.component.html -->
+<app-nav-client></app-nav-client>
+<br/>
+<div class="recapitulatif-container">
+    <h2>Récapitulatif de paiement</h2>
+    <div class="recapitulatif-details">
+      <img [src]="creancierLogo" alt="Creancier Logo" class="creancier-logo">
+      <div class="details-item"><strong>Créancier:</strong> {{ creancierName }}</div>
+      <div class="details-item"><strong>Créance:</strong> {{ creanceName }}</div>
+      <div class="details-item"><strong>Donateur:</strong> {{ formData['Téléphone du donateur'] }}</div>
+    </div>
+    <h3>Récapitulatif des informations saisies</h3>
+    <table class="recap-table">
+      <thead>
+        <tr>
+          <th>RÉFÉRENCE</th>
+          <th>DESCRIPTION</th>
+          <th>PRIX TTC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>100001192072</td>
+          <td>Don Sidaction</td>
+          <td>{{ creanceAmount }} DH</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="total">
+      <strong>Total:</strong> {{ calculateTotalAmount() }} DH
+    </div>
+    <button class="confirm-button" (click)="confirmTransaction()">Confirmer et Signer</button>
+  </div>
+  
