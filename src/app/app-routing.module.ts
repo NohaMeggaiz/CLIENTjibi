@@ -10,6 +10,7 @@ import { EffectuerpaiementComponent } from './components/effectuerpaiement/effec
 import { RecapitulatifComponent } from './components/recapitulatif/recapitulatif.component';
 import { ServicesComponent } from './components/services/services.component';
 import { AboutUSComponent } from './about-us/about-us.component';
+import { CompteComponent } from './compte/compte.component';
 const routes: Routes = [
   {path:'',component:WelcomeComponent},
   {path:'home',component:WelcomeComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'facture-form', component: FactureFormComponent },
   { path: 'recapitulatif', component: RecapitulatifComponent },
   {path:'services',component:ServicesComponent},
-  {path:'about',component:AboutUSComponent}
+  {path:'about',component:AboutUSComponent},
+  {path:'compte',component:CompteComponent}
 
 ];
 

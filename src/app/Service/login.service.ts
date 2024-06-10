@@ -49,13 +49,13 @@ export class LoginService {
     this.router.navigate(['']);
   }
 
-  getCurrentClientId(): number {
-    if (!this.currentClient) {
-      const clientString = localStorage.getItem('currentClient') ?? '';
-      this.currentClient = JSON.parse(clientString);
-    }
-    return this.currentClient.id;
+ getCurrentClientId(): number {
+  if (!this.currentClient) {
+    const clientString = localStorage.getItem('currentClient') ?? '{}'; // Provide a default empty object if null or undefined
+    this.currentClient = JSON.parse(clientString);
   }
+  return this.currentClient.id ?? 0; // Provide a default value for ID if it's not found in the parsed object
+}
 
   getCurrentClient(): any {
     if (!this.currentClient) {

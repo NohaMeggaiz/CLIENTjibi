@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TransactionRequest } from '../models copy/TransactionRequest';
+import { LoginService } from '../Service/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class PayementService {
 
   private apiUrl = 'http://localhost:8090/transactions/make'; // Update this URL to your actual endpoint
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private loginService: LoginService,
+  ) { }
 
  
 
@@ -21,7 +23,7 @@ export class PayementService {
 
   private baseUrl = 'http://localhost:8090/api';
 
-  id !:number;
+ 
 
 
   getCompteSolde(clientId: number): Observable<number> {

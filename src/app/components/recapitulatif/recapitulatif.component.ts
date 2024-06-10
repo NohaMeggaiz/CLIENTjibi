@@ -1,5 +1,3 @@
-// recapitulatif.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -21,7 +19,7 @@ export class RecapitulatifComponent implements OnInit {
     this.formData = navigation?.extras?.state?.['data'] || {};
     this.creancierName = navigation?.extras?.state?.['creancierName'] || '';
     this.creancierLogo = navigation?.extras?.state?.['creancierLogo'] || '';
-    this.creanceName = 'Some Creance'; // Adjust as needed
+    this.creanceName = navigation?.extras?.state?.['creanceName'] || 'Some Creance'; // Adjust as needed
     this.creanceAmount = navigation?.extras?.state?.['creanceAmount'] || 0;
     this.transactionType = navigation?.extras?.state?.['transactionType'] || 'facture';
   }
@@ -35,17 +33,9 @@ export class RecapitulatifComponent implements OnInit {
     console.log("type of transaction: " + this.transactionType);
   }
 
-  getTransactionDetails(): { label: string, value: any }[] {
-    return [
-      { label: 'Téléphone du donateur', value: this.formData['Téléphone du donateur'] },
-      { label: 'Montant du don', value: this.creanceAmount }
-    ];
-  }
-
   calculateTotalAmount(): number {
     return this.creanceAmount;
   }
-
   confirmTransaction() {
     // Navigate back to the initial interface with a success message
     this.router.navigate(['/initial-interface'], {
